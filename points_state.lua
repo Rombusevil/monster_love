@@ -19,18 +19,18 @@ function points_state(points_obj, won)
     add(drawables, tutils({text="thanks for playing!"       , shadowed=true, bordered=true, bg=1, sh=9, fg=8, centerx=true, y=10}))
     add(drawables, tutils({text="made with sff by @rmbsevl" , shadowed=true, bordered=true, bg=1, sh=9, fg=8, centerx=true, y=17}))
 
-    add(drawables, tutils({text="kills:    ", centerx=true, y=30+10}))
-    add(drawables, tutils({text="        "..points_obj.kills, centerx=true, y=30+10}))
+    add(drawables, tutils({text="kills:          ", centerx=true, y=30+10}))
+    add(drawables, tutils({text="             "..points_obj.kills, centerx=true, y=30+10}))
 
-    add(drawables, tutils({text=" wips:    ",centerx=true, y=30+17}))
-    add(drawables, tutils({text="        "..points_obj.wipped,centerx=true, y=30+17}))
+    add(drawables, tutils({text=" whiplashes:      ",centerx=true, y=30+17}))
+    add(drawables, tutils({text="             "..points_obj.wipped,centerx=true, y=30+17}))
 
-    add(drawables, tutils({text="score:    ", centerx=true, y=30+24}))
-    add(drawables, tutils({text="        "..points_obj.score, centerx=true, y=30+24}))
+    add(drawables, tutils({text="score:          ", centerx=true, y=30+24}))
+    add(drawables, tutils({text="             "..points_obj.score, centerx=true, y=30+24}))
 
     local final=points_obj.kills+points_obj.wipped+points_obj.score
     add(drawables, tutils({text="final score:    ", centerx=true, y=30+34}))
-    add(drawables, tutils({text="              "..final, centerx=true, y=30+34}))
+    add(drawables, tutils({text="             "..final, centerx=true, y=30+34}))
 
     local btmx=70
     local btmy=112

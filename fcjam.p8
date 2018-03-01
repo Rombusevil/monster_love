@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 16
+version 15
 __lua__
 -- made with super-fast-framework
 
@@ -866,43 +866,6 @@ function game_state()
     end
     return s
 end
-function gameover_state()
-    local s={}
-    local texts={}
-    local frbkg=8
-    local frfg=6
-    music(-1)
-    sfx(-1)
-    local ty=15
-    add(texts, tutils({text="                         ",centerx=true,y=ty,fg=8,bg=0,bordered=true,shadowed=true,sh=2})) ty+=10
-    add(texts, tutils({text="                         " ,centerx=true,y=ty,fg=8,bg=0,bordered=true,shadowed=true,sh=2}))ty+=10
-    add(texts, tutils({text="                         ",centerx=true,y=ty,fg=8,bg=0,bordered=true,shadowed=true,sh=2})) ty+=10
-    add(texts, tutils({text="                         ",centerx=true,y=ty,fg=8,bg=0,bordered=true,shadowed=true,sh=2})) ty+=10
-    add(texts, tutils({text="                         ",centerx=true,y=ty,fg=8,bg=0,bordered=true,shadowed=true,sh=2})) ty+=20
-    add(texts, tutils({text="                         ",centerx=true,y=ty,fg=8,bg=0,bordered=true,shadowed=true,sh=2})) ty+=10
-    add(texts, tutils({text="press ❎ to restart", blink=true, on_time=15, centerx=true,y=110,fg=0,bg=1,bordered=false,shadowed=true,sh=7}))
-    s.update=function()
-        if(btnp(5)) curstate=game_state() 
-    end
-    cls()
-    s.draw=function()
-        dance_bkg(10,frbkg)
-        local frame_x0=10	
-        local frame_y0=10
-        local frame_x1=128-frame_x0	
-        local frame_y1=128-frame_y0
-        rectfill(frame_x0  ,frame_y0-1, frame_x1, frame_y1  , 7)
-        rectfill(frame_x0-1,frame_y0+1, frame_x1+1, frame_y1-1, 7)
-        rectfill(frame_x0+1,frame_x0  , frame_x1-1, frame_y1-1, 0)
-        rectfill(frame_x0  ,frame_x0+1, frame_x1  , frame_y1-2, 0)
-        rectfill(frame_x0+2,frame_x0+1, frame_x1-2, frame_y1-2, frfg)
-        rectfill(frame_x0+1,frame_x0+2, frame_x1-1, frame_y1-3, frfg)
-        for t in all(texts) do
-            t:draw()
-        end
-    end
-    return s
-end
 function win_state()
     local s={}
     local texts={}
@@ -1150,15 +1113,15 @@ function points_state(points_obj, won)
     camera(0,0)
     add(drawables, tutils({text="thanks for playing!"       , shadowed=true, bordered=true, bg=1, sh=9, fg=8, centerx=true, y=10}))
     add(drawables, tutils({text="made with sff by @rmbsevl" , shadowed=true, bordered=true, bg=1, sh=9, fg=8, centerx=true, y=17}))
-    add(drawables, tutils({text="kills:    ", centerx=true, y=30+10}))
-    add(drawables, tutils({text="        "..points_obj.kills, centerx=true, y=30+10}))
-    add(drawables, tutils({text=" wips:    ",centerx=true, y=30+17}))
-    add(drawables, tutils({text="        "..points_obj.wipped,centerx=true, y=30+17}))
-    add(drawables, tutils({text="score:    ", centerx=true, y=30+24}))
-    add(drawables, tutils({text="        "..points_obj.score, centerx=true, y=30+24}))
+    add(drawables, tutils({text="kills:          ", centerx=true, y=30+10}))
+    add(drawables, tutils({text="             "..points_obj.kills, centerx=true, y=30+10}))
+    add(drawables, tutils({text=" whiplashes:      ",centerx=true, y=30+17}))
+    add(drawables, tutils({text="             "..points_obj.wipped,centerx=true, y=30+17}))
+    add(drawables, tutils({text="score:          ", centerx=true, y=30+24}))
+    add(drawables, tutils({text="             "..points_obj.score, centerx=true, y=30+24}))
     local final=points_obj.kills+points_obj.wipped+points_obj.score
     add(drawables, tutils({text="final score:    ", centerx=true, y=30+34}))
-    add(drawables, tutils({text="              "..final, centerx=true, y=30+34}))
+    add(drawables, tutils({text="             "..final, centerx=true, y=30+34}))
     local btmx=70
     local btmy=112
     add(drawables, tutils({text="back to menu", x=btmx, y=btmy, fg=8, bg=7, bordered=true}))
@@ -1195,9 +1158,9 @@ function outro_state(points_obj)
     add(drawables, tutils({text="done!", centerx=true, bordered=false, shadowed=true, sh=sh_c, fg=fg_c, bg=7, y=20}))
     add(drawables, tutils({text="we can go now...", centerx=true, bordered=false, shadowed=true, sh=sh_c, fg=fg_c, bg=7, y=20+9}))
     add(drawables, tutils({text="everything ok honey?", centerx=true, bordered=false, shadowed=true, sh=sh_c, fg=fg_c, bg=7, y=89}))
-    local btmx=50
+    local btmx=35
     local btmy=119
-    add(drawables, tutils({text="click to continue", x=btmx, y=btmy, fg=8, bg=7, bordered=true}))
+    add(drawables, tutils({text="click here to continue", x=btmx, y=btmy, fg=8, bg=7, bordered=true}))
     function linda(x,y)
         local anim_obj=anim()
         anim_obj:add(112,3,0.3,1,1)

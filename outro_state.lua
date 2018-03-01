@@ -16,9 +16,9 @@ function outro_state(points_obj)
 
     add(drawables, tutils({text="everything ok honey?", centerx=true, bordered=false, shadowed=true, sh=sh_c, fg=fg_c, bg=7, y=89}))
     
-    local btmx=50
+    local btmx=35
     local btmy=119
-    add(drawables, tutils({text="click to continue", x=btmx, y=btmy, fg=8, bg=7, bordered=true}))
+    add(drawables, tutils({text="click here to continue", x=btmx, y=btmy, fg=8, bg=7, bordered=true}))
 
     function linda(x,y)
         local anim_obj=anim()
